@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        padding: 25vh 25vw;
+    }
+    .btn {
+        width: 100%;
+        background-color:cadetblue;
+        cursor: pointer;
+        border: solid 1px black;
+        text-align: left;
+        padding: 18px;
+        transition: 0.5s;
+    }
+    .actvie, .btn:hover {
+        background-color:aqua;
+    }
+    .panel {
+        padding: 0 18px;
+        max-height: 0;
+        overflow: hidden;
+        background-color:aquamarine;
+        transition: max-height 0.2s ease-out;
+    }
+</style>
+<body>
+    <button class="btn" style="border-radius: 10px 10px 0 0;display: flex;flex-direction: row;justify-content:space-between;"><h4>INFORMATION MANAGEMENT</h4><p class="para">+</p></button>
+    <div class="panel">
+        <p>Information Management is an emerging field that is concerned with: The infrastructure used to collect, manage, preserve, store and deliver information.</p>
+    </div>
+    <button class="btn" style="display: flex;flex-direction: row;justify-content:space-between;"><h4>NETWORKING 1</h4><p class="para">+</p></button>
+    <div class="panel">
+        <p>Computer Networking refers to interconnected computing devices that can exchange data and share resources with each other. These networked devices use a system of rules, called communications protocols, to transmit information over physical or wireless technologies.</p>
+    </div>
+    <button class="btn" style="display: flex;flex-direction: row;justify-content:space-between;"><h4>WEB SYSTEMS AND TECHNOLOGIES</h4><p class="para">+</p></button>
+    <div class="panel">
+        <p>Web Information System, or web-based information system, is an information system that uses Internet web technologies to deliver information and services, to users or other information systems/applications.</p>
+    </div>
+    <button class="btn" style="border-radius: 0 0 10px 10px;display: flex;flex-direction: row;justify-content:space-between;"><h4>SYSTEMS INTEGRATION AND ARCHITECTURE 1</h4><p class="para">+</p></button>
+    <div class="panel" style="border-radius: 10px;">
+        <p>The Systems Integration Architecture provides a bridge between the heterogeneous operational applications and platforms. This architecture ties together the mix of platforms, operating systems, transports, and applications.</p>
+    </div>
+</body>
+<script>
+    let a = document.getElementsByClassName('btn');
+    let p = document.getElementsByClassName('para');
+
+    for(let i=0;i<a.length;i++){
+        a[i].addEventListener('click', function (){
+            this.classList.toggle('active');
+            let panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+                p[i].textContent = '+';
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + 'px';
+                p[i].textContent = '-';
+            }
+        }, false);
+    }
+</script>
+</html>
